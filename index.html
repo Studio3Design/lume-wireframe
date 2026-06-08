@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUME | Homepage Wireframe</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #111; font-size: 16px; line-height: 1.6; }
+  nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; border-bottom: 1px solid #e0e0e0; background: #fff; }
+  .nav-logo { font-size: 18px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 32px; list-style: none; font-size: 14px; }
+  .nav-links a { text-decoration: none; color: #111; }
+  .nav-cta { display: flex; gap: 12px; align-items: center; font-size: 14px; }
+  .btn { display: inline-block; padding: 10px 22px; font-size: 14px; font-weight: 600; cursor: pointer; border: 1.5px solid #111; background: transparent; text-decoration: none; color: #111; letter-spacing: 0.03em; }
+  .btn-fill { background: #111; color: #fff; }
+  .btn:hover { opacity: 0.75; }
+  section { padding: 100px 48px; border-bottom: 1px solid #e0e0e0; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+  h1 { font-size: clamp(36px, 5vw, 72px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(28px, 3.5vw, 48px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; }
+  h3 { font-size: 20px; font-weight: 700; }
+  h4 { font-size: 16px; font-weight: 700; }
+  p { color: #444; max-width: 600px; }
+  .lead { font-size: 18px; color: #444; max-width: 640px; margin-top: 16px; }
+  .img-placeholder { background: #e8e8e8; display: flex; align-items: center; justify-content: center; color: #999; font-size: 12px; font-weight: 500; text-align: center; padding: 8px; }
+  #hero { padding: 0; position: relative; min-height: 90vh; display: flex; flex-direction: column; justify-content: flex-end; border-bottom: 1px solid #e0e0e0; }
+  .hero-bg { position: absolute; inset: 0; background: #d4d4d4; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 13px; }
+  .hero-content { position: relative; z-index: 2; padding: 60px 48px; max-width: 800px; }
+  .hero-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 20px; color: #555; }
+  .hero-content h1 { margin-bottom: 24px; }
+  .hero-content .lead { margin-bottom: 36px; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 48px; }
+  .journey-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 64px; padding-top: 64px; border-top: 1px solid #e0e0e0; }
+  .step-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #888; margin-bottom: 12px; }
+  .step h3 { margin-bottom: 10px; }
+  .step p { font-size: 14px; max-width: none; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid #e0e0e0; margin-top: 48px; }
+  .service-card { padding: 40px 32px; border-right: 1px solid #e0e0e0; }
+  .service-card:last-child { border-right: none; }
+  .service-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+  .service-card h3 { font-size: 22px; margin-bottom: 10px; }
+  .service-card .tagline { font-style: italic; color: #666; margin-bottom: 16px; font-size: 15px; }
+  .service-img { height: 200px; margin-bottom: 24px; }
+  .providers-strip { margin-top: 64px; padding-top: 48px; border-top: 1px solid #e0e0e0; }
+  .providers-strip .section-label { margin-bottom: 32px; }
+  .providers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .provider-card { padding: 28px; border: 1px solid #e0e0e0; }
+  .provider-img { height: 120px; margin-bottom: 16px; }
+  .provider-name { font-weight: 700; font-size: 16px; }
+  .provider-title { font-size: 13px; color: #888; margin-bottom: 10px; }
+  .provider-quote { font-size: 13px; color: #555; font-style: italic; margin-bottom: 12px; line-height: 1.5; }
+  .provider-link { font-size: 13px; font-weight: 600; text-decoration: none; color: #111; border-bottom: 1px solid #111; }
+  #social-proof { background: #f6f6f6; }
+  .testimonial-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+  .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 64px; }
+  .testimonial-card { background: #fff; padding: 32px; border: 1px solid #e0e0e0; }
+  .quote-mark { font-size: 48px; line-height: 1; color: #ccc; margin-bottom: 12px; font-family: Georgia, serif; }
+  .testimonial-card p { font-size: 15px; color: #333; margin-bottom: 20px; max-width: none; }
+  .testimonial-card .initials { font-size: 12px; font-weight: 700; color: #888; }
+  .media-strip { padding-top: 48px; border-top: 1px solid #e0e0e0; }
+  .media-logos { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 16px; }
+  .media-logo-box { width: 140px; height: 56px; border: 1px solid #e0e0e0; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #aaa; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 240px); gap: 12px; }
+  .gallery-grid .img-placeholder:first-child { grid-column: span 2; grid-row: span 2; }
+  .gallery-header { margin-bottom: 40px; }
+  .faq-cta-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .faq-list { margin-top: 32px; }
+  .faq-item { border-top: 1px solid #e0e0e0; }
+  .faq-item:last-child { border-bottom: 1px solid #e0e0e0; }
+  .faq-question { width: 100%; background: none; border: none; padding: 20px 0; font-size: 15px; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #111; font-family: inherit; }
+  .faq-arrow { font-size: 18px; transition: transform 0.2s; color: #888; }
+  .faq-answer { display: none; padding: 0 0 20px; font-size: 14px; color: #555; line-height: 1.7; max-width: none; }
+  .faq-answer.open { display: block; }
+  .faq-arrow.open { transform: rotate(45deg); }
+  .cta-panel { background: #111; color: #fff; padding: 56px 48px; }
+  .cta-panel h2 { color: #fff; margin-bottom: 16px; font-size: 36px; }
+  .cta-panel p { color: #aaa; max-width: none; margin-bottom: 32px; }
+  .cta-panel .btn { border-color: #fff; color: #fff; margin-right: 12px; margin-bottom: 12px; }
+  .cta-panel .btn-fill { background: #fff; color: #111; }
+  .tribanner { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid #e0e0e0; margin-bottom: 80px; }
+  .tri-item { padding: 36px 32px; border-right: 1px solid #e0e0e0; }
+  .tri-item:last-child { border-right: none; }
+  .tri-item h4 { margin-bottom: 10px; }
+  .tri-item p { font-size: 14px; max-width: none; color: #666; margin-bottom: 20px; }
+  footer { padding: 64px 48px 32px; background: #111; color: #fff; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid #333; margin-bottom: 32px; }
+  .footer-brand p { color: #888; font-size: 14px; max-width: none; margin-top: 16px; }
+  .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #888; margin-bottom: 20px; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; font-size: 14px; }
+  .footer-col a { color: #bbb; text-decoration: none; }
+  .footer-logo { font-size: 18px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; display: block; margin-bottom: 16px; }
+  .footer-bottom { display: flex; justify-content: space-between; font-size: 13px; color: #666; }
+  .wf-note { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: #f0f0f0; color: #888; padding: 3px 10px; margin-bottom: 24px; border: 1px dashed #ccc; }
+  .svc-links { display: flex; flex-direction: column; gap: 8px; border-top: 1px solid #e0e0e0; padding-top: 20px; margin-top: 20px; }
+  .svc-links a { font-size: 13px; color: #444; text-decoration: none; }
+  .svc-links a:last-child { color: #111; font-weight: 600; }
+</style>
+</head>
+<body>
+<nav>
+  <span class="nav-logo">LUME</span>
+  <ul class="nav-links"><li><a href="#">Aesthetics</a></li><li><a href="#">Wellness</a></li><li><a href="#">Longevity</a></li><li><a href="#">Providers</a></li><li><a href="#">Shop</a></li></ul>
+  <div class="nav-cta"><a href="#" style="font-size:13px;color:#111;text-decoration:none;">(312) 285-2004</a><a class="btn btn-fill" href="#">Book Now</a></div>
+</nav>
+<section id="hero">
+  <div class="hero-bg">[ Hero image / subtle motion texture ]</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Aesthetics &amp; Wellness Center &middot; River North, Chicago</div>
+    <h1>LUME</h1>
+    <p class="lead">A Destination for Intentional, Life-Enhancing Decisions</p>
+    <div class="hero-actions"><a class="btn btn-fill" href="#">Book Now</a><a class="btn" href="#">Explore Services</a></div>
+  </div>
+</section>
+<section id="intro">
+  <div class="wf-note">Module 2 &middot; Intro &amp; Brand Story</div>
+  <div class="intro-grid">
+    <div>
+      <div class="section-label">Who We Are</div>
+      <h2>LUME IS Not Your Standard Medspa.</h2>
+      <p class="lead">We're where refined vitality begins. Rooted in science, guided by medical experts, and built for people who expect more from their care.</p>
+      <p style="margin-top:16px;">Every treatment at Lume is part of a bigger picture. Our PA, NP, and clinical team applies daily medical oversight so you always know what you're doing and why.</p>
+      <div style="margin-top:32px;"><a class="btn btn-fill" href="#">Step Inside the Experience</a></div>
+    </div>
+    <div class="img-placeholder" style="height:500px;">[ Brand video / cinematic B-roll ]</div>
+  </div>
+  <div class="journey-steps">
+    <div class="step"><div class="step-num">01 &middot; Consult</div><h3>Start with a Comprehensive Consult</h3><p>Led by medical experts. Every plan is built by our PA, NP, and clinical team, with daily medical oversight.</p></div>
+    <div class="step"><div class="step-num">02 &middot; Transform</div><h3>A Personalized Plan That Combines the Right Treatments</h3><p>We stack aesthetics, wellness, and performance treatments into one coordinated approach.</p></div>
+    <div class="step"><div class="step-num">03 &middot; Elevate</div><h3>Maintain and Improve Results Over Time</h3><p>With the right plan and the right team, your results don't fade. Instead, they evolve with you.</p></div>
+    <div style="grid-column:1/-1;padding-top:40px;"><a class="btn" href="#">Schedule a Comprehensive Consult</a></div>
+  </div>
+</section>
+<section id="services">
+  <div class="wf-note">Module 3 &middot; Services &amp; Providers</div>
+  <div class="section-label">What We Offer</div>
+  <h2>Aesthetics. Wellness. Longevity.</h2>
+  <div class="services-grid">
+    <div class="service-card"><div class="img-placeholder service-img">[ Aesthetics imagery ]</div><div class="service-tag">Aesthetics</div><h3>Refine. Restore. Elevate.</h3><p class="tagline">Advanced aesthetic treatments designed to enhance, not overdo.</p><div class="svc-links"><a href="#">Botox</a><a href="#">Dermal Fillers</a><a href="#">Hydrafacial</a><a href="#">Moxi Laser</a><a href="#">View All Med Spa Treatments</a></div></div>
+    <div class="service-card"><div class="img-placeholder service-img">[ Wellness imagery ]</div><div class="service-tag">Wellness</div><h3>Recover. Rebalance. Perform.</h3><p class="tagline">Medically guided care designed to improve how your body performs daily.</p><div class="svc-links"><a href="#">IV Therapy</a><a href="#">Cryotherapy</a><a href="#">Infrared Sauna</a><a href="#">Hyperbaric Oxygen Therapy</a><a href="#">View All Clinical Wellness Treatments</a></div></div>
+    <div class="service-card"><div class="img-placeholder service-img">[ Longevity imagery ]</div><div class="service-tag">Longevity</div><h3>Optimize. Extend. Evolve.</h3><p class="tagline">Advanced therapies to optimize health, hormones, and long-term outcomes.</p><div class="svc-links"><a href="#">GLP-1</a><a href="#">HRT</a><a href="#">Peptide Therapy</a><a href="#">NAD+ Injections</a><a href="#">View All Longevity Treatments</a></div></div>
+  </div>
+  <div class="providers-strip">
+    <div class="section-label">Aesthetic Eyes. Medical Foundations.</div>
+    <div class="providers-grid">
+      <div class="provider-card"><div class="img-placeholder provider-img">[ Anna Suffern ]</div><div class="provider-name">Anna Suffern</div><div class="provider-title">Registered Nurse</div><p class="provider-quote">"Anna turns what could be intimidating into something easy, calm, and genuinely enjoyable."</p><a class="provider-link" href="#">Meet Anna</a></div>
+      <div class="provider-card"><div class="img-placeholder provider-img">[ Shelly Headley ]</div><div class="provider-name">Shelly Headley</div><div class="provider-title">Nurse Practitioner</div><p class="provider-quote">"Shelly explained everything in a way that finally clicked, and I could feel the difference immediately."</p><a class="provider-link" href="#">Meet Shelly</a></div>
+      <div class="provider-card"><div class="img-placeholder provider-img">[ Meg Hosking ]</div><div class="provider-name">Meg Hosking</div><div class="provider-title">Physician Assistant</div><p class="provider-quote">"Meg pays attention to the most insanely small details, and that's what makes the results look so natural."</p><a class="provider-link" href="#">Meet Meg</a></div>
+    </div>
+  </div>
+</section>
+<section id="social-proof">
+  <div class="wf-note">Module 4 &middot; Testimonials &amp; Media</div>
+  <div class="testimonial-header">
+    <div><div class="section-label">What Our Guests Say</div><h2>Real People. Real Results.</h2></div>
+    <div style="display:flex;gap:12px;"><a class="btn" href="#">Memberships &amp; Packages</a><a class="btn btn-fill" href="#">Book Now</a></div>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card"><div class="quote-mark">"</div><p>The space is absolutely beautiful, spotless, and calming.</p><div class="initials">KL</div></div>
+    <div class="testimonial-card"><div class="quote-mark">"</div><p>Everything about this place exceeded my expectations.</p><div class="initials">AA</div></div>
+    <div class="testimonial-card"><div class="quote-mark">"</div><p>You're not treated like a transaction, but like a person.</p><div class="initials">HCS</div></div>
+    <div class="testimonial-card"><div class="quote-mark">"</div><p>An absolute wellness haven.</p><div class="initials">MS</div></div>
+    <div class="testimonial-card"><div class="quote-mark">"</div><p>Everyone is so understanding, comforting and good at their job.</p><div class="initials">AH</div></div>
+    <div class="testimonial-card"><div class="quote-mark">"</div><p>They genuinely care about your wellness journey.</p><div class="initials">KL</div></div>
+  </div>
+  <div class="media-strip"><div class="section-label">As Seen In</div><div class="media-logos"><div class="media-logo-box">Daytime Chicago</div><div class="media-logo-box">Media Outlet</div><div class="media-logo-box">Media Outlet</div><div class="media-logo-box">Media Outlet</div></div></div>
+</section>
+<section id="gallery">
+  <div class="wf-note">Module 5 &middot; Visual Gallery</div>
+  <div class="gallery-header"><div class="section-label">The Lume Experience</div><h2>See It for Yourself</h2></div>
+  <div class="gallery-grid">
+    <div class="img-placeholder">[ Featured: Before &amp; After ]</div>
+    <div class="img-placeholder">[ Space / Ambiance ]</div>
+    <div class="img-placeholder">[ Treatment in action ]</div>
+    <div class="img-placeholder">[ Team / Providers ]</div>
+    <div class="img-placeholder">[ Results close-up ]</div>
+  </div>
+</section>
+<section id="faq-cta">
+  <div class="wf-note">Module 6 &middot; FAQ &amp; Closing CTA</div>
+  <div class="tribanner">
+    <div class="tri-item"><h4>Medical Weight Loss Quiz</h4><p>Find out if GLP-1 or peptide therapy is right for your goals.</p><a class="btn" href="#">Take the Quiz</a></div>
+    <div class="tri-item"><h4>Peptide Therapy Quiz</h4><p>Discover which peptides can help you perform, recover, and thrive.</p><a class="btn" href="#">Take the Quiz</a></div>
+    <div class="tri-item"><h4>Join Our Newsletter</h4><p>Wellness insights, exclusive offers, and what's new at Lume.</p><a class="btn btn-fill" href="#">Sign Up</a></div>
+  </div>
+  <div class="faq-cta-inner">
+    <div>
+      <div class="section-label">Have Questions?</div>
+      <h2>Everything You Need to Know</h2>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">What should I expect during my first visit? <span class="faq-arrow">+</span></button><div class="faq-answer">Your first visit begins with a check-in at our River North location and a comprehensive consultation with a trained wellness specialist. They will review your goals, answer questions, and recommend services or packages that suit your needs.</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">How do memberships and packages work? <span class="faq-arrow">+</span></button><div class="faq-answer">Lume offers memberships and package options to help you get consistent wellness benefits and save on services. With a membership, you earn monthly tech credits for cryotherapy, infrared sauna, hyperbaric oxygen therapy, and more.</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Can I combine multiple services in one visit? <span class="faq-arrow">+</span></button><div class="faq-answer">Absolutely. Many guests combine services such as sauna, IV therapy, and lymphatic compression into a single wellness session to maximize benefits.</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Is Lume open to first-time visitors? <span class="faq-arrow">+</span></button><div class="faq-answer">Yes. Many guests start with little to no prior experience. Our team is here to educate you and help you feel confident about what treatments are right for you.</div></div>
+      </div>
+    </div>
+    <div class="cta-panel">
+      <div class="section-label" style="color:#666;">Ready When You Are</div>
+      <h2>Age with Agency and Grace.</h2>
+      <p>Take the first step toward intentional, life-enhancing care. Our team is ready to build a plan around you.</p>
+      <a class="btn btn-fill" href="#">Book a Consultation</a>
+      <a class="btn" href="#">View Memberships</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><span class="footer-logo">LUME</span><p>A Destination for Intentional, Life-Enhancing Decisions.<br><br>River North, Chicago<br>(312) 285-2004</p></div>
+    <div class="footer-col"><h4>Treatments</h4><ul><li><a href="#">Aesthetics</a></li><li><a href="#">Wellness</a></li><li><a href="#">Longevity</a></li><li><a href="#">View All</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="#">Our Providers</a></li><li><a href="#">About</a></li><li><a href="#">Memberships</a></li><li><a href="#">Shop</a></li></ul></div>
+    <div class="footer-col"><h4>Connect</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Book Now</a></li><li><a href="#">Contact</a></li><li><a href="#">Newsletter</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>2026 Lume Wellness. All rights reserved.</span><span><a href="#" style="color:#666;text-decoration:none;">Privacy</a> &middot; <a href="#" style="color:#666;text-decoration:none;">Terms</a></span></div>
+</footer>
+<script>
+function toggleFaq(btn){var a=btn.nextElementSibling,ar=btn.querySelector('.faq-arrow'),o=a.classList.contains('open');document.querySelectorAll('.faq-answer').forEach(function(x){x.classList.remove('open');});document.querySelectorAll('.faq-arrow').forEach(function(x){x.classList.remove('open');});if(!o){a.classList.add('open');ar.classList.add('open');}}
+</script>
+</body>
+  </html>
